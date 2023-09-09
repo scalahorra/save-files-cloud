@@ -12,17 +12,17 @@ export default function ShowFiles({ parentId }: FolderStructure) {
     window.open(fileLink);
   }
 
-  return <div className={ styles.fileGridAux }>
+  return <div className={ styles.fileGrid }>
     { fileList.map((file: { id:'', imageLink:'', imageName:'', isFolder:false, folderName:'' }) => {
       return (
 
-        <div className={ styles.fileAux } key={ file.id }>
+        <div className={ styles.file } key={ file.id }>
 
         { file.isFolder ? (
 
           <div
             onClick={ () => router.push(`/file?id=${ file.id }`) }
-            className={ `${ styles.noImageAux } ${ styles.hvrGrow }` }>
+            className={ `${ styles.noImage } ${ styles.hvrGrow }` }>
             <AiFillFolder size={ 80 } />
             <p>{ file.folderName }</p>
           </div>
@@ -30,7 +30,7 @@ export default function ShowFiles({ parentId }: FolderStructure) {
         ) : (
 
           <img onClick={ () => openFile(file.imageLink) }
-            className={`${ styles.imgAux } ${ styles.hvrGrow }`}
+            className={`${ styles.imgFile } ${ styles.hvrGrow }`}
             src={ file.imageLink }
           />
 

@@ -1,17 +1,18 @@
 import React, { ChangeEvent, useState } from 'react'
 import Button from '../common/Button/Button';
+import CommonProgress from '../common/Progress/Progress';
 import { fileUpload } from '@/Api/FileUpload';
 import styles from "./UploadFiles.module.scss";
 
 export default function UploadFiles() {
 
   const [isFileVisible, setFileVisible] = useState(false);
-  const [file, setFile] = useState({})
+  const [progress, setProgress] = useState(0)
 
   const uploadFile = async (event: ChangeEvent<HTMLInputElement>) => {
     console.log(event);
     let file = event.target.files?.[0];
-    fileUpload(file);
+    fileUpload(file, setProgress);
   }
 
   return (
@@ -36,6 +37,10 @@ export default function UploadFiles() {
         title='Crear carpeta'
         btnClass='btn-success'
       />
+
+      { progress === 0 || progress === 100 ? <></>
+      : <CommonProgress progress={ progress } />
+      }
     </div>
   )
 }

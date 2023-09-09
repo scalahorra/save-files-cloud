@@ -19,7 +19,7 @@ export default function ShowFiles() {
             className={`${styles.files} bg-accent`}
             onClick={() => openFile(file.imageLink)}>
               {/* <AiFillFileText size={80} /> */}
-              <img className={styles.imageLink} src={file.imageLink} />
+              <img className={`${styles.imageLink} ${styles.hvrGrow}`} src={file.imageLink} />
           </div>
         </div>
       )

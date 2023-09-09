@@ -5,15 +5,17 @@ import { database } from "@/firebaseConfig";
 let files = collection(database, 'files');
 
 export const fetchFiles = () => {
-  const [fileList, setFileList] = useState<ArrayType>([{}]);
+  const [fileList, setFileList] = useState<Array<any>>([]);
 
   useEffect(() => {
-    return onSnapshot(files, (response) => {
+    const unsubscribe = onSnapshot(files, (response) => {
       setFileList(response.docs.map((item) => {
-        return {...item.data(), id: item.id};
+        return { ...item.data(), id: item.id };
       }));
     });
-  });
+
+    return () => unsubscribe();
+  }, []);
 
   return { fileList };
 }

@@ -18,6 +18,11 @@ export default function UploadFiles() {
   return (
     <div className={styles.uploadMain}>
       <Button
+        title='Crear carpeta'
+        btnClass='btn-success'
+      />
+
+      <Button
         onClick={ () => setFileVisible(!isFileVisible) }
         title='Añadir archivo'
         btnClass='btn-success m-2'
@@ -32,11 +37,6 @@ export default function UploadFiles() {
       ) : ( <></> )
 
       }
-
-      <Button
-        title='Crear carpeta'
-        btnClass='btn-success'
-      />
 
       { progress === 0 || progress === 100 ? <></>
       : <CommonProgress progress={ progress } />

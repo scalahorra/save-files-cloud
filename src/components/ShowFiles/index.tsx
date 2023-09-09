@@ -1,26 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { fetchFiles } from '@/hooks/fetchFiles';
 import { AiFillFileText } from 'react-icons/ai';
 import styles from './ShowFiles.module.scss';
 
 export default function ShowFiles() {
-  let { fileList } = fetchFiles();
+  const { fileList } = fetchFiles();
+  console.log(fileList);
 
   const openFile = (fileLink: string) => {
     window.open(fileLink);
   }
 
-  return <div>
-    { fileList.map((file: { imageLink: '', imageName: '' }) => {
+  return <div className={styles.filesGrid}>
+    { fileList.map((file: { id: '', imageLink: '', imageName: '' }) => {
       return (
-        <div>
+        <div key={file.id}>
           <div
             className={`${styles.files} bg-accent`}
             onClick={() => openFile(file.imageLink)}>
-              <AiFillFileText size={80} />
-              <p>{ file.imageName }</p>
+              {/* <AiFillFileText size={80} /> */}
+              <img className={styles.imageLink} src={file.imageLink} />
           </div>
-          {/* <img className={styles.imageLink} src={file.imageLink} /> */}
         </div>
       )
     }) }

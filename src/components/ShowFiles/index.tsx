@@ -1,28 +1,41 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { fetchFiles } from '@/hooks/fetchFiles';
-import { AiFillFileText } from 'react-icons/ai';
+import { AiFillFileText, AiFillFolder } from 'react-icons/ai';
 import styles from './ShowFiles.module.scss';
 
 export default function ShowFiles() {
   const { fileList } = fetchFiles();
-  console.log(fileList);
+  console.log('Archivos recibidos', fileList);
 
   const openFile = (fileLink: string) => {
     window.open(fileLink);
   }
 
-  return <div className={styles.filesGrid}>
-    { fileList.map((file: { id: '', imageLink: '', imageName: '' }) => {
+  return <div className={ styles.fileGridAux }>
+    { fileList.map((file: { id:'', imageLink:'', imageName:'', isFolder:false, folderName:'' }) => {
       return (
-        <div key={file.id}>
-          <div
-            className={`${styles.files} bg-accent`}
-            onClick={() => openFile(file.imageLink)}>
-              {/* <AiFillFileText size={80} /> */}
-              <img className={`${styles.imageLink} ${styles.hvrGrow}`} src={file.imageLink} />
+
+        <div className={ styles.fileAux } key={ file.id }>
+
+        { file.isFolder ? (
+
+          <div className={ `${styles.noImageAux} ${styles.hvrGrow}` }>
+            <AiFillFolder size={ 80 } />
+            <p>{ file.folderName }</p>
           </div>
+
+        ) : (
+
+          <img onClick={ () => openFile(file.imageLink) }
+            className={`${ styles.imgAux } ${ styles.hvrGrow }`}
+            src={ file.imageLink }/>
+
+        ) }
+
         </div>
+
       )
     }) }
+
   </div>
 }

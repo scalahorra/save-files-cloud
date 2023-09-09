@@ -1,27 +1,33 @@
-.imageLink {
-  width: 300px;
-  height: 300px;
-  object-fit: cover;
+.fileGridAux {
+  display: grid;
+  gap: 1rem;
+  grid-auto-rows: 21rem;
+  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  margin: 2rem;
 }
 
-.files {
+.fileAux {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imgAux {
+  height: 20rem;
+  cursor: pointer;
+}
+
+.noImageAux {
+  width: 12rem;
+  height: 12rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
-  background-color: #64748b;
+  border-radius: 10px;
+  background-color: #55595f;
   cursor: pointer;
 }
-
-.filesGrid {
-  width: 100%;
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-  gap: 30px;
-  justify-content: center;
-}
-
 
 .hvrGrow {
   display: inline-block;

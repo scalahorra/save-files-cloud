@@ -12,3 +12,7 @@ interface GithubAuth {
   clientId: string;
   clientSecret: string;
 }
+
+interface ArrayType {
+  map: Function;
+}

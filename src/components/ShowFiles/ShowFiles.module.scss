@@ -1,0 +1,25 @@
+.imageLink {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+}
+
+.files {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background-color: #64748b;
+  cursor: pointer;
+}
+
+.filesGrid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 30px;
+  justify-content: center;
+}
